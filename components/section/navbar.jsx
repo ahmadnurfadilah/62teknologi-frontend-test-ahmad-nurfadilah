@@ -11,8 +11,10 @@ export default function Navbar() {
     <nav className="h-16 flex items-center">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <LogoIpsum className="text-white h-10" />
-          <ul className="flex items-center gap-10 font-semibold text-white/60">
+          <Link href="/">
+            <LogoIpsum className="h-10 text-white" />
+          </Link>
+          <ul className="flex items-center gap-10 font-semibold text-white/70">
             <li>
               <Link href="/" className={`${pathname === "/" ? "underline font-bold text-white" : "hover:text-white"}`}>
                 Home

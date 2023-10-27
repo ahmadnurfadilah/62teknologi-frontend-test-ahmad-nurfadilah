@@ -63,7 +63,7 @@ export default function Page() {
 			</div>
 
       <div className="fixed right-0 bottom-0 top-16 w-1/2">
-        <MapInSearch region={region} />
+        <MapInSearch region={region} businesses={businesses} />
       </div>
     </div>
   );

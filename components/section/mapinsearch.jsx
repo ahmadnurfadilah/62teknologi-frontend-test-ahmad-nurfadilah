@@ -5,7 +5,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
-export default function MapInSearch({ region }) {
+export default function MapInSearch({ region, businesses }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(0);
@@ -22,15 +22,22 @@ export default function MapInSearch({ region }) {
         container: mapContainer.current,
         style: "mapbox://styles/mapbox/streets-v12",
         center: [region.longitude, region.latitude],
-        zoom: 9,
+        zoom: 12,
       });
 
       map.current.on("move", () => {
         setLng(map.current.getCenter().lng.toFixed(4));
         setLat(map.current.getCenter().lat.toFixed(4));
       });
+
+      {businesses.length > 0 && businesses.map((i) => {
+        new mapboxgl.Marker()
+          .setLngLat([i.coordinates.longitude, i.coordinates.latitude])
+          .setPopup(new mapboxgl.Popup().setHTML(i.name))
+          .addTo(map.current);
+      })}
     }
-  }, [region]);
+  }, [region, businesses]);
 
   return <div ref={mapContainer} className="map-container h-full w-full" />;
 }

@@ -3,6 +3,7 @@ export async function GET(request) {
   const limit = searchParams.get("limit");
   const offset = searchParams.get("offset");
   const location = searchParams.get("location");
+  const term = searchParams.get("term");
 
   const options = {
     method: "GET",
@@ -12,7 +13,12 @@ export async function GET(request) {
     },
   };
 
-  const res = await fetch(`https://api.yelp.com/v3/businesses/search?location=${location}&sort_by=best_match&limit=${limit}&offset=${offset}`, options);
+  let query = `location=${location}&sort_by=best_match&limit=${limit}&offset=${offset}`;
+  if (term) {
+    query += `&term=${term}`;
+  }
+
+  const res = await fetch(`https://api.yelp.com/v3/businesses/search?${query}`, options);
   const data = await res.json();
 
   return Response.json({ data });

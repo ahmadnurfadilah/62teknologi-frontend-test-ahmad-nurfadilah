@@ -17,8 +17,7 @@ export default function MapInSearch({ region, businesses }) {
   }, [region, businesses]);
 
   const onMove = (e) => {
-    console.log(e.originalEvent.type);
-    if (e.originalEvent.type === "mousemove") {
+    if (e?.originalEvent?.type === "mousemove") {
       setLatitude(e.viewState.latitude);
       setLongitude(e.viewState.longitude);
     }

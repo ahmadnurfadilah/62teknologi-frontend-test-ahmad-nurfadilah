@@ -34,12 +34,12 @@ export default function Page() {
   // get businesses when page is changed
   useEffect(() => {
     getBusinesses(page);
-  }, [page]);
+  }, [page, searchParams]);
 
   // get businesses
   const getBusinesses = (page) => {
     setLoading(true);
-    fetch(`/api/search?location=NYC&limit=${limit}&offset=${page === 1 ? 0 : (page - 1) * limit}`)
+    fetch(`/api/search?location=${searchParams.get("location")}&term=${searchParams.get("search") || ""}&limit=${limit}&offset=${page === 1 ? 0 : (page - 1) * limit}`)
       .then((res) => res.json())
       .then((res) => {
         setBusinesses(res?.data?.businesses || []);

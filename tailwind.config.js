@@ -7,6 +7,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
+        mono: "JetBrains Mono",
         sans: "Plus Jakarta Sans",
       },
       colors: {

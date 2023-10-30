@@ -1,5 +1,7 @@
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
+  const limit = searchParams.get("limit");
+  const offset = searchParams.get("offset");
   const location = searchParams.get("location");
 
   const options = {
@@ -10,7 +12,7 @@ export async function GET(request) {
     },
   };
 
-  const res = await fetch(`https://api.yelp.com/v3/businesses/search?location=${location}&sort_by=best_match&limit=20`, options);
+  const res = await fetch(`https://api.yelp.com/v3/businesses/search?location=${location}&sort_by=best_match&limit=${limit}&offset=${offset}`, options);
   const data = await res.json();
 
   return Response.json({ data });

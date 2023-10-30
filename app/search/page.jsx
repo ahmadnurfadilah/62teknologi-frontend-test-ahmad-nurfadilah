@@ -2,7 +2,7 @@
 
 import "react-loading-skeleton/dist/skeleton.css";
 import Skeleton from "react-loading-skeleton";
-import MapInSearch from "@/components/section/mapinsearch";
+import MapInSearch from "@/components/section/map-in-search";
 import Navbar from "@/components/section/navbar";
 import { ChevronLeft, ChevronRight, Loader, MessageSquare, Star } from "lucide-react";
 import Image from "next/image";
@@ -38,7 +38,6 @@ export default function Page() {
 
   // get businesses
   const getBusinesses = (page) => {
-    console.log(page);
     setLoading(true);
     fetch(`/api/search?location=NYC&limit=${limit}&offset=${page === 1 ? 0 : (page - 1) * limit}`)
       .then((res) => res.json())

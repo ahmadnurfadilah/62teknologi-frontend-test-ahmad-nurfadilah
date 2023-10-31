@@ -4,6 +4,7 @@ export async function GET(request) {
   const offset = searchParams.get("offset");
   const location = searchParams.get("location");
   const term = searchParams.get("term");
+  const sortby = searchParams.get("sortby");
 
   const options = {
     method: "GET",
@@ -13,9 +14,12 @@ export async function GET(request) {
     },
   };
 
-  let query = `location=${location}&sort_by=best_match&limit=${limit}&offset=${offset}`;
+  let query = `location=${location}&limit=${limit}&offset=${offset}`;
   if (term) {
     query += `&term=${term}`;
+  }
+  if (sortby) {
+    query += `&sort_by=${sortby ?? "best_match"}`;
   }
 
   const res = await fetch(`https://api.yelp.com/v3/businesses/search?${query}`, options);

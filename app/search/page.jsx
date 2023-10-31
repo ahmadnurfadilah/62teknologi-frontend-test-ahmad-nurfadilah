@@ -4,13 +4,14 @@ import "react-loading-skeleton/dist/skeleton.css";
 import Skeleton from "react-loading-skeleton";
 import MapInSearch from "@/components/section/map-in-search";
 import Navbar from "@/components/section/navbar";
-import { ChevronLeft, ChevronRight, Filter, Loader, MessageSquare, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Loader, MessageSquare, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 import Sorting from "@/components/ui/sorting";
+import Filter from "@/components/ui/filter";
 
 export default function Page() {
   const router = useRouter();
@@ -75,9 +76,7 @@ export default function Page() {
         <div className="flex items-center justify-between mb-4 sticky top-20 bg-white/50 z-10 backdrop-blur p-2 rounded-lg border shadow-sm">
           <h1 className="font-bold text-xl ml-2">Browsing {searchParams.get("search") || searchParams.get("location")} Businesses</h1>
           <div className="flex items-center divide-x">
-            <button className="p-2.5 bg-gray-100 hover:bg-gray-200 rounded-l">
-              <Filter className="w-5 h-5" />
-            </button>
+            <Filter />
             <Sorting />
           </div>
         </div>

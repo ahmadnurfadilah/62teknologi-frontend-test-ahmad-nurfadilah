@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -17,8 +17,18 @@
   min-width: 0;
 }
 
+.embla__slide_details {
+  flex: 0 0 75%;
+  min-width: 0;
+}
+
 @media (min-width: 768px) {
-    .embla__slide {
-      flex: 0 0 15%;
-    }
+  .embla__slide {
+    flex: 0 0 15%;
   }
+
+  .embla__slide_details {
+    flex: 0 0 50%;
+    min-width: 0;
+  }
+}
